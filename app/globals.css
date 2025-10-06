@@ -1,32 +1,67 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@font-face {
-  font-family: 'Share Tech Mono';
-  src: url('/public/fonts/ShareTechMono-Regular.ttf') format('truetype');
-
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@import 'tailwindcss';
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Instellen van de donkere achtergrond en lichte voorgrond voor de Next.js structuur */
+    --background: 0 0% 3.9%; /* Zeer donker grijs */
+    --foreground: 210 20% 98%; /* Zeer licht grijs */
+
+    /* Voorbeeld van hoe je je terminal kleur als accent kunt definiëren */
+    --terminal-green: #00ff00;
+  }
+
+  /* Forceer de basiskleuren op de <html> en <body> elementen */
+  html {
+    background-color: #0a0a0a; /* Vaste donkere achtergrond */
+    color: #cccccc;
   }
 }
 
+/* 2. Global Styles for Terminal/Military Look */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* Je bestaande stijlen blijven staan */
+  /* De background en color variabelen zijn nu gedefinieerd in :root en Tailwind */
   font-family: 'Share Tech Mono', monospace;
+
+  /* Zorgt voor een subtiele, groene gloed op de donkere achtergrond */
+  background-image: radial-gradient(rgba(0, 150, 0, 0.15), transparent 80%);
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 3. Scanline/Raster Effect (onveranderd) */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
+
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+.yt-embed-holder {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  pointer-events: none;
+}
+
+.yt-embed-holder iframe {
+  width: 300%;
+  height: 100%;
+  margin-left: -100%;
 }
