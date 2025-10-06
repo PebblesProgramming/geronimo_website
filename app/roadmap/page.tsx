@@ -4,8 +4,8 @@ import { ClipboardDocumentListIcon } from '@heroicons/react/24/solid';
 // Data voor de Tijdlijn
 const roadmapStages = [
   {
-    quarter: 'Q4 2024',
-    title: 'Phase I: Initial Deployment (Complete)',
+    quarter: 'Q3 2025',
+    title: 'Unity Rework',
     status: 'Operational',
     details: [
       'Core gameplay loop finalization.',
@@ -15,19 +15,30 @@ const roadmapStages = [
     className: 'bg-green-600',
   },
   {
-    quarter: 'Q1 2025',
-    title: 'Phase II: Beta Integration',
+    quarter: 'Q4 2025',
+    title: 'The grunt work',
     status: 'In Progress',
+    details: [
+      'Core gameplay loop finalization.',
+      'Infrastructure server testing (Alpha).',
+      'Art style and asset pipeline established.',
+    ],
+    className: 'bg-yellow-600',
+  },
+  {
+    quarter: 'March 25th 2026',
+    title: 'RELEASE',
+    status: 'Planned',
     details: [
       'Private Beta access launch (selected operators).',
       'Community feedback integration (Priority 1).',
       'Advanced server scaling implementation.',
     ],
-    className: 'bg-yellow-600',
+    className: 'bg-blue-600',
   },
   {
-    quarter: 'Q2 2025',
-    title: 'Phase III: Content Expansion',
+    quarter: 'Q2 2026',
+    title: 'Modding and Civilians',
     status: 'Planned',
     details: [
       'New map sector deployment (Sector Gamma).',
@@ -35,17 +46,6 @@ const roadmapStages = [
       'Narrative lore update (Data package 3.0).',
     ],
     className: 'bg-blue-600',
-  },
-  {
-    quarter: 'Q3 2025',
-    title: 'Phase IV: Full Readiness',
-    status: 'Planned',
-    details: [
-      'Open Beta commencement.',
-      'Final performance optimization pass.',
-      'Marketing campaign launch (Global).',
-    ],
-    className: 'bg-purple-600',
   },
 ];
 
