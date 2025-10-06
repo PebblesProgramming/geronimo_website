@@ -34,7 +34,7 @@ export const navItems: NavItem[] = [
   {
     label: 'Updates',
     // icon: <CommandLineIcon className="h-5 w-5" />, // Aangepast naar CommandLineIcon
-    href: '/updates',
+    href: '/devupdates',
     className: `px-3 py-2 flex items-center gap-2 rounded-md hover:bg-gray-700 hover:text-[${TERMINAL_GREEN}] transition-all duration-200 ease-in-out`,
   },
   {

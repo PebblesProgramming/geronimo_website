@@ -72,14 +72,11 @@ const Gallery = () => {
       </button>
 
       {/* Horizontal Scroll Container */}
-      <div
-        ref={scrollRef}
-        className="scrollbar-hide scrollbar-hide flex gap-6 overflow-x-scroll p-4"
-      >
+      <div ref={scrollRef} className="scrollbar-hide flex gap-6 overflow-x-scroll p-4">
         {images.map((image, index) => (
           <div
             key={index}
-            className={`min-w-[300px] border sm:min-w-[400px] border-[${TERMINAL_GREEN}]/50 hover:border-[${TERMINAL_GREEN}] shadow-[0_0_8px_rgba(0,255,0,0.2)] transition-all duration-300`}
+            className={`min-w-[300px] border sm:min-w-[400px] border-[${TERMINAL_GREEN}]/50 hover:border-[${TERMINAL_GREEN}] shadow-[0_0_15px_rgba(0,255,0,0.5)] transition-all duration-300`}
           >
             <div className="relative h-64">
               <Image

@@ -17,22 +17,25 @@
     color: #cccccc;
   }
 }
+/* globals.css - Optie 1: Static / Noise */
+/* globals.css - Optie 2: Raster / Grid */
 
-/* 2. Global Styles for Terminal/Military Look */
 body {
-  /* Je bestaande stijlen blijven staan */
-  /* De background en color variabelen zijn nu gedefinieerd in :root en Tailwind */
+  /* De background-color (#0a0a0a) blijft de basis */
   font-family: 'Share Tech Mono', monospace;
-
-  /* Zorgt voor een subtiele, groene gloed op de donkere achtergrond */
-  background-image: radial-gradient(rgba(0, 150, 0, 0.15), transparent 80%);
-  background-size: cover;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+
+  /* NIEUWE STIJL: Subtiele Donkere Grid Textuur (5px afstand) */
+  background-image:
+    linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+    linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+  background-size: 20px 20px; /* Pas de 20px aan voor grotere of kleinere vakjes */
+  background-color: #0a0a0a; /* Zorgt ervoor dat de achtergrondkleur consistent is */
 }
 
-/* 3. Scanline/Raster Effect (onveranderd) */
+/* 3. Scanline/Raster Effect (Verwijder of laat staan indien gewenst) */
 body::before {
   content: '';
   position: absolute;
@@ -42,7 +45,7 @@ body::before {
   height: 100%;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.2; /* Pas de zichtbaarheid aan */
 
   background: repeating-linear-gradient(
     0deg,
@@ -64,4 +67,15 @@ body::before {
   width: 300%;
   height: 100%;
   margin-left: -100%;
+}
+
+.scrollbar-hide {
+  /* Verbergt de scrollbar voor IE, Edge en Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Verbergt de scrollbar voor Chrome, Safari en Opera (WebKit browsers) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

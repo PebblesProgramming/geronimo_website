@@ -1,6 +1,12 @@
-// app/updates/page.tsx
+'use client';
 import Image from 'next/image';
 import { CommandLineIcon, CalendarIcon } from '@heroicons/react/24/solid';
+import customization from '../../public/geronimo/customization1.png';
+import steampage1 from '../../public/geronimo/steampage1.png';
+import steampage2 from '../../public/geronimo/steampage2.png';
+import steampage3 from '../../public/geronimo/steampage3.jpg';
+import random1 from '../../public/geronimo/Screenshot 2024-11-10 190305.png';
+import random2 from '../../public/geronimo/Screenshot 2025-10-01 145215.png';
 
 const updateLogs = [
   {
@@ -8,7 +14,7 @@ const updateLogs = [
     title: 'PATCH DEPLOYMENT 1.0.3',
     date: '2025-10-01',
     excerpt: 'Critical fix for server stability and corrected minor visual glitches in Sector 4.',
-    imagePath: '/update-log-1.jpg', // Zorg dat deze in /public staat
+    imagePath: customization, // Zorg dat deze in /public staat
   },
   {
     id: 2,
@@ -16,21 +22,35 @@ const updateLogs = [
     date: '2025-09-15',
     excerpt:
       'Access granted to Sector GAMMA. Extreme weather conditions reported. Proceed with caution.',
-    imagePath: '/update-log-2.jpg', // Zorg dat deze in /public staat
+    imagePath: steampage1, // Zorg dat deze in /public staat
   },
   {
     id: 3,
     title: 'WEAPONS RECALIBRATION',
     date: '2025-09-01',
     excerpt: 'Balancing update for all assault class weapons. See full details in the data log.',
-    imagePath: '/update-log-3.jpg', // Zorg dat deze in /public staat
+    imagePath: steampage2, // Zorg dat deze in /public staat
   },
   {
     id: 4,
     title: 'COMMUNITY FEEDBACK INTEGRATION',
     date: '2025-08-20',
     excerpt: 'Key suggestions from Operation Phoenix integrated into the core engine.',
-    imagePath: '/update-log-4.jpg', // Zorg dat deze in /public staat
+    imagePath: steampage3, // Zorg dat deze in /public staat
+  },
+  {
+    id: 5,
+    title: 'COMMUNITY FEEDBACK INTEGRATION',
+    date: '2025-08-20',
+    excerpt: 'Key suggestions from Operation Phoenix integrated into the core engine.',
+    imagePath: random1, // Zorg dat deze in /public staat
+  },
+  {
+    id: 6,
+    title: 'COMMUNITY FEEDBACK INTEGRATION',
+    date: '2025-08-20',
+    excerpt: 'Key suggestions from Operation Phoenix integrated into the core engine.',
+    imagePath: random2, // Zorg dat deze in /public staat
   },
 ];
 
@@ -61,12 +81,12 @@ export default function UpdatesPage() {
         </div>
 
         {/* Updates Grid */}
-        <section className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <section className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
           {updateLogs.map((log) => (
             <div
               key={log.id}
               onClick={() => handleCardClick(log.id)}
-              className={`border bg-gray-900/70 border-[${TERMINAL_GREEN}]/30 cursor-pointer p-1 shadow-[0_0_8px_rgba(0,255,0,0.2)] hover:border-[${TERMINAL_GREEN}] flex flex-col transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,0,0.5)]`}
+              className={`border bg-gray-900/70 border-[${TERMINAL_GREEN}]/30 cursor-pointer p-1 shadow-[0_0_15px_rgba(0,255,0,0.5)] hover:border-[${TERMINAL_GREEN}] flex flex-col transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,0,0.5)]`}
             >
               <div className="relative h-48 w-full">
                 <Image

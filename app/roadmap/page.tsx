@@ -81,7 +81,7 @@ export default function RoadmapPage() {
 
                 {/* De Inhoud van de Stap */}
                 <div
-                  className={`border border-gray-700/50 bg-gray-900/70 p-6 hover:shadow-xl hover:shadow-[${TERMINAL_GREEN}]/10 transition-shadow duration-300`}
+                  className={`border border-gray-700/50 bg-gray-900/70 p-6 hover:shadow-xl hover:shadow-[${TERMINAL_GREEN}]/10 shadow-[0_0_15px_rgba(0,255,0,0.5)] transition-shadow duration-300`}
                 >
                   <time
                     className={`mb-1 text-sm leading-none font-semibold text-[${TERMINAL_GREEN}] tracking-wider uppercase`}

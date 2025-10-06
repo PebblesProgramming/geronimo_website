@@ -2,7 +2,17 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  plugins: [require('tailwind-scrollbar-hide')],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {}, // Je kunt hier later eigen kleuren, fonts, etc. toevoegen
+  },
+  plugins: [
+    require('tailwind-scrollbar-hide'), // HIER REGISTREER JE DE PLUGIN
+  ],
 };
 
 export default config;

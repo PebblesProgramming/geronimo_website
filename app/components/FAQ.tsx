@@ -34,25 +34,29 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
   return (
     <div className={`border-b border-gray-800 last:border-b-0`}>
       <button
-        className="hover:text-[${TERMINAL_GREEN}] flex w-full items-center justify-between py-4 text-left font-mono text-lg transition-colors"
+        className={`flex w-full items-center justify-between py-4 text-left font-mono text-lg transition-colors ${isOpen ? `text-[${TERMINAL_GREEN}]` : 'hover:text-gray-100'} `}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="flex items-center gap-2">
           {isOpen ? (
             <ChevronDownIcon className={`h-5 w-5 text-[${TERMINAL_GREEN}]`} />
           ) : (
-            <ChevronRightIcon className={`h-5 w-5 text-gray-500`} />
+            <ChevronRightIcon className={`h-5 w-5 text-gray-500 hover:text-[${TERMINAL_GREEN}]`} />
           )}
           {question}
         </span>
       </button>
-      {isOpen && (
+
+      {/* GEANIMEERD ANTWOORD VELD */}
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[999px]' : 'max-h-0'} `}
+      >
         <div
           className={`border-t p-4 pt-0 font-sans text-gray-400 border-[${TERMINAL_GREEN}]/30 bg-gray-900/50`}
         >
-          <p className="text-sm leading-relaxed">{answer}</p>
+          <p className="pb-4 text-sm leading-relaxed">{answer}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };
@@ -60,7 +64,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
 const FAQList = () => {
   return (
     <div
-      className={`mx-auto w-full max-w-4xl border-2 border-dashed border-[#00ff00]/40 bg-gray-900/60 p-4 shadow-[0_0_10px_rgba(0,255,0,0.3)]`}
+      className={`border-white-500 mx-auto w-full border-2 border-dashed bg-gray-900/60 p-4 shadow-[0_0_15px_rgba(0,255,0,0.5)]`}
     >
       {faqData.map((item, index) => (
         <FAQItem key={index} question={item.question} answer={item.answer} />

@@ -1,6 +1,7 @@
 import YoutubeEmbed from './components/YoutubeEmbed';
 import Gallery from './components/Gallery';
 import FAQList from './components/FAQ';
+import Footer from './components/Footer';
 
 export default function Home() {
   // Terminal Green color for accents
@@ -34,7 +35,7 @@ export default function Home() {
           <h2
             className={`border-b text-3xl font-semibold border-[${TERMINAL_GREEN}] pb-2 text-[${TERMINAL_GREEN}] uppercase`}
           >
-            [GERONIMO] - Tactical VR at its best
+            [Dev updates]
           </h2>
           <Gallery />
         </section>
@@ -46,7 +47,7 @@ export default function Home() {
           <h2
             className={`border-b text-3xl font-semibold border-[${TERMINAL_GREEN}] pb-2 text-[${TERMINAL_GREEN}] uppercase`}
           >
-            [SYSTEM CHECK] — FREQUENTLY ASKED QUESTIONS
+            [FAQ]
           </h2>
           <FAQList />
         </section>
@@ -56,41 +57,3 @@ export default function Home() {
     </div>
   );
 }
-
-// --- Footer Component ---
-
-const socialLinks = [
-  { name: 'Twitter', href: '#' },
-  { name: 'Discord', href: '#' },
-  { name: 'Instagram', href: '#' },
-  { name: 'Youtube', href: '#' },
-];
-
-const Footer = () => {
-  const TERMINAL_GREEN = '#00ff00';
-
-  return (
-    <footer className="mx-auto mt-20 flex w-full max-w-7xl flex-col items-center justify-between border-t border-t-gray-700/50 p-6 sm:flex-row">
-      <div className="mb-4 text-center sm:mb-0 sm:text-left">
-        <p className={`text-lg font-semibold text-[${TERMINAL_GREEN}] tracking-widest uppercase`}>
-          DarkMatterStudios
-        </p>
-        <p className="mt-1 text-xs text-gray-500">
-          &copy; {new Date().getFullYear()} All rights reserved.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-4">
-        {socialLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className={`text-sm text-gray-400 hover:text-[${TERMINAL_GREEN}] uppercase transition-colors duration-200`}
-          >
-            [{link.name}]
-          </a>
-        ))}
-      </div>
-    </footer>
-  );
-};

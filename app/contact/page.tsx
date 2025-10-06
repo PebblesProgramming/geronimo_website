@@ -50,7 +50,7 @@ export default function ContactPage() {
         {/* Contact Form & Info Grid */}
         <section className="grid w-full max-w-5xl gap-12 md:grid-cols-3">
           {/* Contact Form (2/3 width on desktop) */}
-          <div className="border-[${TERMINAL_GREEN}]/40 border-2 border-dashed bg-gray-900/60 p-6 shadow-[0_0_10px_rgba(0,255,0,0.3)] md:col-span-2">
+          <div className="border-[${TERMINAL_GREEN}]/40 border-2 border-dashed bg-gray-900/60 p-6 shadow-[0_0_15px_rgba(0,255,0,0.5)] md:col-span-2">
             <h2 className={`mb-6 font-mono text-2xl text-[${TERMINAL_GREEN}]`}>
               :: MESSAGE ENCODING
             </h2>
