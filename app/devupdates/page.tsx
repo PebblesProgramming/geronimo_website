@@ -1,6 +1,9 @@
 'use client';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { CommandLineIcon, CalendarIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react';
+
+// --- Lokale Afbeelding Imports (Pas Paden Aan Indien Nodig) ---
 import customization from '../../public/geronimo/customization1.png';
 import steampage1 from '../../public/geronimo/steampage1.png';
 import steampage2 from '../../public/geronimo/steampage2.png';
@@ -8,13 +11,24 @@ import steampage3 from '../../public/geronimo/steampage3.jpg';
 import random1 from '../../public/geronimo/Screenshot 2024-11-10 190305.png';
 import random2 from '../../public/geronimo/Screenshot 2025-10-01 145215.png';
 
-const updateLogs = [
+// --- Component Imports (Controleer de Paden) ---
+import TerminalModal from '../components/Popup'; // Jouw naam voor de modal
+import UpdateArticle from '../components/Article'; // Jouw naam voor het artikel component
+import { UpdateLog } from '../types/update';
+
+// --- Data (Alle Fouten Opgelost) ---
+const updateLogs: UpdateLog[] = [
   {
     id: 1,
     title: 'PATCH DEPLOYMENT 1.0.3',
     date: '2025-10-01',
     excerpt: 'Critical fix for server stability and corrected minor visual glitches in Sector 4.',
-    imagePath: customization, // Zorg dat deze in /public staat
+    fullDetails:
+      "Deployed a critical hotfix to address the 'ghosting' bug reported by Alpha Testers in the last 48 hours. Server stability is now at 99.8%. We've also optimized asset loading times by 12% across all platforms. A small celebration for the Dev Team is scheduled.",
+    imagePath: customization,
+    creationDate: new Date('2025-10-01T10:00:00Z'),
+    updatedDate: new Date('2025-10-01T10:30:00Z'),
+    author: 'PatchBot 1.0',
   },
   {
     id: 2,
@@ -22,46 +36,69 @@ const updateLogs = [
     date: '2025-09-15',
     excerpt:
       'Access granted to Sector GAMMA. Extreme weather conditions reported. Proceed with caution.',
-    imagePath: steampage1, // Zorg dat deze in /public staat
+    fullDetails:
+      'New map Sector GAMMA is now available! This sector features new environmental hazards including sandstorms and radiation zones. Remember to update your hazmat suit configuration before deployment. New loot caches are scattered throughout the new zone.',
+    imagePath: steampage1,
+    creationDate: new Date('2025-09-15T15:00:00Z'),
+    updatedDate: new Date('2025-09-15T15:00:00Z'),
   },
   {
     id: 3,
     title: 'WEAPONS RECALIBRATION',
     date: '2025-09-01',
     excerpt: 'Balancing update for all assault class weapons. See full details in the data log.',
-    imagePath: steampage2, // Zorg dat deze in /public staat
+    fullDetails:
+      "Comprehensive analysis of weapon usage across all test groups showed an imbalance in the Assault Class. We've adjusted recoil and damage fall-off for the 'Vindicator' and slightly increased the stability of the 'Commando' rifle.",
+    imagePath: steampage2,
+    creationDate: new Date('2025-09-01T08:00:00Z'),
+    updatedDate: new Date('2025-09-01T08:00:00Z'),
   },
   {
     id: 4,
     title: 'COMMUNITY FEEDBACK INTEGRATION',
     date: '2025-08-20',
     excerpt: 'Key suggestions from Operation Phoenix integrated into the core engine.',
-    imagePath: steampage3, // Zorg dat deze in /public staat
+    fullDetails:
+      "We've listened to your feedback from Operation Phoenix! Key changes include improved squad UI communication, a dedicated 'Mark Target' button, and several quality-of-life changes to the inventory management system. Thank you for your continued support!",
+    imagePath: steampage3,
+    creationDate: new Date('2025-08-20T11:00:00Z'),
+    updatedDate: new Date('2025-08-20T11:00:00Z'),
   },
   {
     id: 5,
-    title: 'COMMUNITY FEEDBACK INTEGRATION',
-    date: '2025-08-20',
-    excerpt: 'Key suggestions from Operation Phoenix integrated into the core engine.',
-    imagePath: random1, // Zorg dat deze in /public staat
+    title: 'ENGINE OPTIMIZATION PASS',
+    date: '2025-08-01',
+    excerpt: 'Minor engine adjustments leading to reduced memory usage and frame stuttering.',
+    fullDetails:
+      'This is a backend update focusing purely on performance. Players should notice slightly improved frame rates, especially during high-action sequences, and a reduction in VRAM usage.',
+    imagePath: random1,
+    creationDate: new Date('2025-08-01T14:00:00Z'),
+    updatedDate: new Date('2025-08-01T14:00:00Z'),
   },
   {
     id: 6,
-    title: 'COMMUNITY FEEDBACK INTEGRATION',
-    date: '2025-08-20',
-    excerpt: 'Key suggestions from Operation Phoenix integrated into the core engine.',
-    imagePath: random2, // Zorg dat deze in /public staat
+    title: 'NEW CHARACTER PREVIEW',
+    date: '2025-07-15',
+    excerpt: 'Sneak peek at "The Ghost", a new stealth operative coming next quarter.',
+    fullDetails:
+      'Introducing "The Ghost" – a highly trained stealth specialist focused on infiltration and espionage. Details on her unique abilities and backstory will follow in the next transmission. Prepare for deep cover ops!',
+    imagePath: random2,
+    creationDate: new Date('2025-07-15T09:00:00Z'),
+    updatedDate: new Date('2025-07-15T09:00:00Z'),
   },
 ];
 
 export default function UpdatesPage() {
   const TERMINAL_GREEN = '#00ff00';
 
-  // Functie voor een klikbare kaart (voor toekomstige popup)
-  const handleCardClick = (id: number) => {
-    console.log(`Open full update log for ID: ${id}`);
-    // Hier kun je een staat (state) instellen om een modale venster te tonen
-    // Voor nu is het alleen een console log.
+  const [selectedLog, setSelectedLog] = useState<UpdateLog | null>(null);
+
+  const handleCardClick = (log: UpdateLog) => {
+    setSelectedLog(log);
+  };
+
+  const handleClose = () => {
+    setSelectedLog(null);
   };
 
   return (
@@ -85,7 +122,7 @@ export default function UpdatesPage() {
           {updateLogs.map((log) => (
             <div
               key={log.id}
-              onClick={() => handleCardClick(log.id)}
+              onClick={() => handleCardClick(log)}
               className={`border bg-gray-900/70 border-[${TERMINAL_GREEN}]/30 cursor-pointer p-1 shadow-[0_0_15px_rgba(0,255,0,0.5)] hover:border-[${TERMINAL_GREEN}] flex flex-col transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,0,0.5)]`}
             >
               <div className="relative h-48 w-full">
@@ -112,6 +149,15 @@ export default function UpdatesPage() {
           ))}
         </section>
       </main>
+
+      {/* TERMINAL MODAL met UpdateArticle */}
+      <TerminalModal
+        isOpen={!!selectedLog}
+        onClose={handleClose}
+        title={selectedLog ? selectedLog.title : 'Update Log'}
+      >
+        {selectedLog && <UpdateArticle log={selectedLog} TERMINAL_GREEN={TERMINAL_GREEN} />}
+      </TerminalModal>
     </div>
   );
 }
