@@ -7,6 +7,9 @@ export default function Home() {
   // Terminal Green color for accents
   const TERMINAL_GREEN = '#00ff00';
 
+  const TERMINAL_GREEN_HEX = '#00ff00';
+  const TERMINAL_GREEN_TAILWIND = 'text-green-400'; // Gebruik een standaard kleur voor de headers als alternatief voor direct gebruik van custom hex
+
   return (
     <div className="min-h-screen px-8 pt-24 pb-20 font-sans text-gray-300 sm:px-20">
       <main className="mx-auto flex w-full max-w-7xl flex-col items-center gap-20">
@@ -33,7 +36,8 @@ export default function Home() {
         {/* Section 2: Horizontal Gallery */}
         <section className="flex w-full flex-col gap-6">
           <h2
-            className={`border-b text-3xl font-semibold border-[${TERMINAL_GREEN}] pb-2 text-[${TERMINAL_GREEN}] uppercase`}
+            className={`border-b text-3xl font-bold ${TERMINAL_GREEN_TAILWIND} pb-2 uppercase`}
+            style={{ color: TERMINAL_GREEN_HEX, textShadow: '0 0 10px rgba(0, 255, 0, 0.5)' }}
           >
             [Dev updates]
           </h2>
@@ -45,7 +49,8 @@ export default function Home() {
         {/* Section 3: FAQ / Knowledge Base */}
         <section className="flex w-full flex-col gap-6">
           <h2
-            className={`border-b text-3xl font-semibold border-[${TERMINAL_GREEN}] pb-2 text-[${TERMINAL_GREEN}] uppercase`}
+            className={`border-b text-3xl font-bold ${TERMINAL_GREEN_TAILWIND} pb-2 uppercase`}
+            style={{ color: TERMINAL_GREEN_HEX, textShadow: '0 0 10px rgba(0, 255, 0, 0.5)' }}
           >
             [FAQ]
           </h2>

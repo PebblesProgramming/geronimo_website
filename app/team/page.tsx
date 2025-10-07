@@ -4,6 +4,9 @@ import team from '../../public/geronimo/team.jpg';
 
 export default function TeamPage() {
   const TERMINAL_GREEN = '#00ff00';
+  // TERMINAL_GREEN kan niet direct in classNames gebruikt worden, tenzij je een safelist configureert of kiest voor een hardgecodeerde kleur (bv. #00ff00)
+  const TERMINAL_GREEN_HEX = '#00ff00';
+  const TERMINAL_GREEN_TAILWIND = 'text-green-400'; // Gebruik een standaard kleur voor de headers als alternatief voor direct gebruik van custom hex
 
   return (
     <div className="min-h-screen px-8 pt-24 pb-20 font-sans text-gray-300 sm:px-20">
@@ -11,10 +14,11 @@ export default function TeamPage() {
         {/* Page Header */}
         <div className="w-full text-center">
           <h1
-            className={`text-5xl font-bold text-[${TERMINAL_GREEN}] flex items-center justify-center gap-4 tracking-widest uppercase`}
+            className={`text-5xl font-bold ${TERMINAL_GREEN_TAILWIND} flex items-center justify-center gap-4 tracking-widest uppercase`}
+            style={{ color: TERMINAL_GREEN_HEX, textShadow: '0 0 10px rgba(0, 255, 0, 0.5)' }}
           >
             <UserGroupIcon className="h-10 w-10" />
-            [TEAM MANIFEST] — OPERATORS
+            [THE OPERATORS]
           </h1>
           <p className="mt-2 text-sm text-gray-500 italic">
             &gt; Authentication Level: ALPHA. Accessing highly classified personnel files.

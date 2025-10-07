@@ -6,6 +6,10 @@ import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
 
 export default function ContactPage() {
   const TERMINAL_GREEN = '#00ff00';
+  // TERMINAL_GREEN kan niet direct in classNames gebruikt worden, tenzij je een safelist configureert of kiest voor een hardgecodeerde kleur (bv. #00ff00)
+  const TERMINAL_GREEN_HEX = '#00ff00';
+  const TERMINAL_GREEN_TAILWIND = 'text-green-400'; // Gebruik een standaard kleur voor de headers als alternatief voor direct gebruik van custom hex
+
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -37,10 +41,11 @@ export default function ContactPage() {
         {/* Page Header */}
         <div className="w-full text-center">
           <h1
-            className={`text-5xl font-bold text-[${TERMINAL_GREEN}] flex items-center justify-center gap-4 tracking-widest uppercase`}
+            className={`text-5xl font-bold ${TERMINAL_GREEN_TAILWIND} flex items-center justify-center gap-4 tracking-widest uppercase`}
+            style={{ color: TERMINAL_GREEN_HEX, textShadow: '0 0 10px rgba(0, 255, 0, 0.5)' }}
           >
             <EnvelopeIcon className="h-10 w-10" />
-            [SECURE COMMS] — CONTACT
+            [SECURE COMMS]
           </h1>
           <p className="mt-2 text-sm text-gray-500 italic">
             &gt; Transmitting data to Command Central. Your message is encrypted.
